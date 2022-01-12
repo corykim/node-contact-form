@@ -60,7 +60,8 @@ app.post("/send", (req, res) => {
 
             // validate the token
             const token = data['token'];
-            validate(token).then(valid => {
+            const remoteIP = req.headers['x-forwarded-for'] || req.socket.remoteAddress
+            validate(token, { remoteIP }).then(valid => {
                 if (valid) {
                     const name = data.name || `${data.firstName || '[NO FIRST NAME]'} ${data.lastName || '[NO LAST NAME]'}`;
 
