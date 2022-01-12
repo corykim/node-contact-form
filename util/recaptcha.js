@@ -18,7 +18,7 @@ const validate = async function(token, data = {}) {
             formData, { 'Content-Type': 'application/x-www-form-urlencoded' },
         )
         .then(function({ data }) {
-            console.log('data', data);
+            // console.log('data', data);
             return data.success;
         }).catch(function(error) {
             console.error(error);
